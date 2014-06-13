@@ -1,8 +1,12 @@
 /** This file can be fed directly to a mySql command to create the
- * empPaths table.
+ *  empPaths table.
+ * 
+ *  This is well tested but before you change it to wack your live data
+ *  REMEMBER TO MOUNT A SCRATCH MONKEY
+ *  http://en.wikipedia.org/wiki/Scratch_monkey
  * 
  *  @author Grant Tegtmeier <Grant@Tegt.com>
- *  @package hofforg
+ *  @package closure
  *  @copyright no
  */
 
