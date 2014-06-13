@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="HasOffers Org Chart View" />
+    <meta name="author" content="Grant Tegtmeier" />
+
+    <title>LAMP tryout</title>
+ 
+    <link href="css/start/jquery-ui-1.10.2.custom.css"
+	  rel="stylesheet" type="text/css" media="screen" />
+	  
+    <link href="css/ui.jqgrid.css" 
+	  rel="stylesheet" type="text/css" media="screen" />
+	  
+    <link href="css/style.css"
+	  rel="stylesheet" type="text/css" media="screen" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" 
+	    type="text/javascript"></script>
+
+    <script src="js/i18n/grid.locale-en.js" 
+	    type="text/javascript"></script>
+
+    <script src="js/jquery.jqGrid.min.js" 
+	    type="text/javascript"></script>
+ 
+    <script type="text/javascript">
+    $(function(){ 
+	$("#emps").jqGrid({
+	    url:'pageEmployees.php',
+	    datatype: 'json',
+	    mtype: 'GET',
+	    colNames:['Employee #', 'Employee Name','Boss Name', 'Distance from CEO','Total Subordinates'],
+	    colModel :[ 
+		{name:'enum', index:'enum', width:90, align:'right'}, 
+		{name:'ename', index:'ename', width:120}, 
+		{name:'bname', index:'bname', width:120}, 
+		{name:'dist', index:'dist', width:120, align:'right'}, 
+		{name:'subs', index:'subs', width:120, align:'right'}
+	    ],
+	    pager: '#pager',
+	    rowNum: 100,
+	    sortname: 'enum',
+	    sortorder: 'asc',
+	    viewrecords: true,
+	    gridview: true,
+	    caption: 'Everybody is somewhere',
+	    height: 600,
+	    loadError: function(xhr, status, error) {
+		if (xhr.responseText.substring(0,6) == "ERROR:")
+		    alert(xhr.responseText);
+	    }
+	}); 
+    }); 
+    </script>
+  </head>
+  <body>
+    <table class="topper"><tr><td>
+	  GIT: <a href="https://github.com/tegt/offorg" target="_blank">github</a>
+      </td><td>
+	  HTML: <a href="index.html.html" target="_blank">index.html</a>
+      </td><td>
+	  PHP:  <a href="show.pageEmployees.php" target="_blank">pageEmployees.php</a>
+      </td><td>
+	  SQL:  <a href="smonkey.sql.html" target="_blank">smonkey.sql</a>
+      </td><td>
+	  Author: <a href="http://tegt.com/resume" target="_blank">Grant Tegtmeier</a>
+    </td></tr></table>
+    <table id="contain">
+      <tr><td>
+	  <table id="emps"><tr><td/></tr></table> 
+	  <div id="pager"></div> 
+      </tr></td>
+    </table>
+  </body>
+</html>
